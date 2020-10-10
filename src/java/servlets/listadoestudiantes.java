@@ -18,7 +18,7 @@ import javax.ejb.EJB;
 
 /**
  *
- * @author geofr
+ * @author Emily
  */
 @WebServlet(name = "listadoestudiantes", urlPatterns = {"/listadoestudiantes"})
 public class listadoestudiantes extends HttpServlet {
@@ -49,16 +49,22 @@ public class listadoestudiantes extends HttpServlet {
             out.println("<h1>Servlet listadoestudiantes at " + request.getContextPath() + "</h1>");
 
             out.println("<table border=1>");
+            out.println("<th>ID</th>");
+            out.println("<th>Nombre</th>");
+            out.println("<th>Apellido</th>");
+            out.println("<th>Calificacion</th>");
             List estudiantes = estudiantesFacade.findAll();
 
 //            beans.Estudiantes e1= new beans.Estudiantes();
 //            e1 = estudiantesFacade.find(13);
             for (int i = 0; i < estudiantes.size(); i++) {
                 beans.Estudiantes e = (beans.Estudiantes) estudiantes.get(i);
+
                 out.println("<tr>");
                 out.println("<td>" + e.getId().toString() + "</td>");
                 out.println("<td>" + e.getNombre() + "</td>");
                 out.println("<td>" + e.getApellido() + "</td>");
+                out.println("<td>" + e.getCalificacion() + "</td>");
                 out.println("</tr>");
             }
             out.println("</table>");
