@@ -10,7 +10,7 @@ import javax.ejb.Local;
 
 /**
  *
- * @author geofr
+ * @author Emily
  */
 @Local
 public interface EstudiantesFacadeLocal {

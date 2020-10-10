@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author geofr
+ * @author Emily
  */
 @Stateless
 public class EstudiantesFacade extends AbstractFacade<Estudiantes> implements EstudiantesFacadeLocal {
