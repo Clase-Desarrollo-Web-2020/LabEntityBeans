@@ -5,23 +5,23 @@
  */
 package servlets;
 
+import beans.EstudiantesFacadeLocal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import beans.*;
-import javax.ejb.EJB;
 
 /**
  *
  * @author geofr
  */
-@WebServlet(name = "listadoestudiantes", urlPatterns = {"/listadoestudiantes"})
-public class listadoestudiantes extends HttpServlet {
+@WebServlet(name = "buscaridestudiante", urlPatterns = {"/buscaridestudiante"})
+public class buscaridestudiante extends HttpServlet {
 
     @EJB
     private EstudiantesFacadeLocal estudiantesFacade;
@@ -37,7 +37,9 @@ public class listadoestudiantes extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        String id = request.getParameter("id");
+        
         PrintWriter out = response.getWriter();
         try {
             /* TODO output your page here. You may use following sample code. */
@@ -49,25 +51,22 @@ public class listadoestudiantes extends HttpServlet {
             out.println("<h1>Servlet listadoestudiantes at " + request.getContextPath() + "</h1>");
 
             out.println("<table border=1>");
-            List estudiantes = estudiantesFacade.findAll();
+//            List estudiantes = estudiantesFacade.findAll();
 
-//            beans.Estudiantes e1= new beans.Estudiantes();
-//            e1 = estudiantesFacade.find(13);
-            for (int i = 0; i < estudiantes.size(); i++) {
-                beans.Estudiantes e = (beans.Estudiantes) estudiantes.get(i);
-                out.println("<tr>");
-                out.println("<td>" + e.getId().toString() + "</td>");
-                out.println("<td>" + e.getNombre() + "</td>");
-                out.println("<td>" + e.getApellido() + "</td>");
-                out.println("</tr>");
-            }
+            beans.Estudiantes e1 = new beans.Estudiantes();
+            e1 = estudiantesFacade.find(Integer.parseInt(id));
+
+            out.println("<tr>");
+            out.println("<td>" + id + "</td>");
+            out.println("<td>" + e1.getNombre() + "</td>");
+            out.println("<td>" + e1.getApellido() + "</td>");
+            out.println("</tr>");
             out.println("</table>");
             out.println("</body>");
             out.println("</html>");
         } finally {
             out.close();
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
