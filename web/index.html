@@ -11,6 +11,16 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <h1>Estudiantes con Entity Java Beans</h1>
+        <a href="listadoestudiantes">Lista de estudiantes</a>
+        <br><br>
+        Crear nuevo estudiante
+        <form name="formGuardar" action="guardarestudiante">
+            ID:             <input type="text" name="id" value="" /> <br/>
+            Nombre:         <input type="text" name="nombre" value="" /> <br/>
+            Apellido:       <input type="text" name="apellido" value="" /> <br/>
+            CalificaciÃ³n:   <input type="text" name="calificacion" value="" /> <br/>
+            <input type="submit" value="Guardar" />
+        </form>
     </body>
 </html>
